@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+:root {
+    --base-color: #ffffff;
+    --text-color: #000000;
+    --primary-color: #ffc06e;
+    --secondary-color: #8B8BFF;
+    --color-1: #f9f6f3;
+    --color-2: #f3f7f9;
+    --color-3: #f6f3f9;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: PT Sans, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--text-color);
+}
+
+body {
+    padding: 1em;
+    background-color: var(--base-color);
+
+}
+
+h1, h2, h3 {
+    font-family: Crimson Text, PT Sans, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+nav{
+    margin: 1em auto 3em auto;
+    width: min(1000px, 100%);
+}
+
+nav ul{
+    display: flex;
+    align-items: center;
+    list-style-type: none;
+    gap: 2em;
+}
+
+nav li:first-child {
+    margin-right: auto;
+    font-family: PT Sans;
+    font-weight: bold;
+    font-size: 1.5em;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--text-color);
+}
+nav a:hover{
+    text-decoration: underline;
+}
+
+header, section{
+    margin: 2em auto;
+    width: min(75em, 100%);
+    background-color: var(--color-1);
+    padding: min(1em, 15%);
+    border-radius: 1em;
+}
+
+.flex-container{
+    display: flex;
+    gap: 3em;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+header img{
+    max-width: 75%;
+    border-radius: 1em;
+    object-fit: cover;
+    object-position: bottom;
+}
+
+.text-container{
+    flex: 0 1 34em;
+}
+
+h1{
+    font-size: 2.5rem;
+}
+
+.text-container p{
+    margin: .75em 0 1em 0;
+    font-size: 1.25em;
+}
+
+.cta-button{
+    display: inline-block;
+    padding: .75em 1.5em;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    text-decoration: none;
+    border-radius: .5em;
+    font-weight: 600;
+}
+
+section{
+    padding: 3em min(2em, 15%);
+    background-color: var(--color-2);
+    text-align: center;
+}
+
+h2{
+    font-size: 2em;
+}
+
+section p{
+    margin-top: 1em;
+    font-size: 1.25em;
+}
