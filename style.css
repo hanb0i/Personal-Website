@@ -28,16 +28,18 @@ body {
 
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
     font-family: Crimson Text, PT Sans, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-nav{
+nav {
     margin: 1em auto 3em auto;
     width: min(1000px, 100%);
 }
 
-nav ul{
+nav ul {
     display: flex;
     align-items: center;
     list-style-type: none;
@@ -55,11 +57,13 @@ nav a {
     text-decoration: none;
     color: var(--text-color);
 }
-nav a:hover{
+
+nav a:hover {
     text-decoration: underline;
 }
 
-header, section{
+header,
+section {
     margin: 2em auto;
     width: min(75em, 100%);
     background-color: var(--color-1);
@@ -67,7 +71,7 @@ header, section{
     border-radius: 1em;
 }
 
-.flex-container{
+.flex-container {
     display: flex;
     gap: 3em;
     flex-wrap: wrap;
@@ -75,27 +79,27 @@ header, section{
     align-items: center;
 }
 
-header img{
-    max-width: 75%;
-    border-radius: 1em;
+header img {
+    max-width: 65%;
+    border-radius: 3em;
     object-fit: cover;
     object-position: bottom;
 }
 
-.text-container{
+.text-container {
     flex: 0 1 34em;
 }
 
-h1{
+h1 {
     font-size: 2.5rem;
 }
 
-.text-container p{
+.text-container p {
     margin: .75em 0 1em 0;
     font-size: 1.25em;
 }
 
-.cta-button{
+.cta-button {
     display: inline-block;
     padding: .75em 1.5em;
     background-color: var(--primary-color);
@@ -105,17 +109,88 @@ h1{
     font-weight: 600;
 }
 
-section{
+section {
     padding: 3em min(2em, 15%);
     background-color: var(--color-2);
     text-align: center;
 }
 
-h2{
+h2 {
     font-size: 2em;
 }
 
-section p{
+section p {
     margin-top: 1em;
     font-size: 1.25em;
+}
+
+/* Interviews Page Styles */
+.content-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 1em;
+}
+
+.channel-header {
+    text-align: center;
+    margin-bottom: 2em;
+    margin-top: 2em;
+}
+
+.channel-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto 1em;
+}
+
+.channel-link {
+    font-size: 1.25em;
+    color: var(--text-color);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-bottom 0.2s ease;
+    font-family: Crimson Text, serif;
+    font-weight: 600;
+}
+
+.channel-link:hover {
+    border-bottom: 1px solid var(--text-color);
+}
+
+.interview-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2em;
+    margin-top: 2em;
+}
+
+.interview-card {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--text-color);
+    transition: transform 0.2s ease;
+}
+
+.interview-card:hover {
+    transform: translateY(-5px);
+}
+
+.interview-card img {
+    width: 400px;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 0;
+    margin-right: 2em;
+}
+
+.interview-card p {
+    font-size: 2em;
+    margin: 0;
+    font-family: Crimson Text, serif;
+    font-weight: 600;
 }
