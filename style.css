@@ -633,4 +633,15 @@ section p {
     border: 1px solid #cfd9de;
     border-radius: 12px;
     font-weight: 600;
+}.post-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 4px 0 8px 0;
+    color: #0f1419;
+}.post-title-full {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 16px;
+    color: #0f1419;
+    line-height: 1.3;
 }
