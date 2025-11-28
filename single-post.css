@@ -1,0 +1,6 @@
+/* Single Post Delete Button */
+.post-header-full {
+    justify-content: space-between;
+    /* Push delete button to the right */
+    width: 100%;
+}

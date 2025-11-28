@@ -18,10 +18,60 @@
                 <li><a href="contact.html">Contact Me</a></li>
             </ul>
         </nav>
-        <div class="flex-container">
-            <h1>Blog</h1>
-            <p>Coming soon...</p>
+        <div class="blog-container">
+            <div class="composer-container" id="composer">
+                <div class="composer-main">
+                    <div class="composer-input" contenteditable="true" placeholder="What's happening?"></div>
+                    <div class="media-preview-container" id="mediaPreview"></div>
+                    <div class="composer-toolbar">
+                        <div class="toolbar-left">
+                            <button class="tool-btn" title="Media"
+                                onclick="document.getElementById('mediaInput').click()">
+                                <img src="Images/folder_icon.png" alt="Upload">
+                            </button>
+                            <input type="file" id="mediaInput" accept="image/*,video/*,application/pdf"
+                                style="display: none;">
+
+                            <button class="tool-btn" title="Bold" onclick="document.execCommand('bold', false, null)">
+                                <b>B</b>
+                            </button>
+                            <button class="tool-btn" title="Italic"
+                                onclick="document.execCommand('italic', false, null)">
+                                <i>I</i>
+                            </button>
+                            <select class="font-selector"
+                                onchange="document.execCommand('fontName', false, this.value)">
+                                <option value="PT Sans">Default</option>
+                                <option value="Crimson Text">Serif</option>
+                                <option value="Courier New">Mono</option>
+                            </select>
+                        </div>
+                        <div class="toolbar-right">
+                            <button class="post-btn" id="postBtn">Post</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="feed-container" id="feedContainer">
+                <!-- Posts will be injected here -->
+            </div>
         </div>
+
+        <!-- Delete Confirmation Modal -->
+        <div id="deleteModal" class="modal">
+            <div class="modal-content">
+                <h3>Delete post?</h3>
+                <p>This can't be undone and it will be removed from your profile and the timeline of any accounts that
+                    follow you.</p>
+                <div class="modal-actions">
+                    <button class="modal-btn cancel" id="cancelDelete">Cancel</button>
+                    <button class="modal-btn delete" id="confirmDelete">Delete</button>
+                </div>
+            </div>
+        </div>
+
+        <script src="blog.js"></script>
     </header>
 </body>
 

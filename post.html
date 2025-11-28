@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post - Hanbo Song</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Hanbo Song</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="interviews.html">Interviews</a></li>
+                <li><a href="contact.html">Contact Me</a></li>
+            </ul>
+        </nav>
+        <div class="blog-container single-post-container">
+            <div id="singlePostContent">
+                <!-- Post content injected here -->
+            </div>
+        </div>
+
+        <!-- Delete Confirmation Modal -->
+        <div id="deleteModal" class="modal">
+            <div class="modal-content">
+                <h3>Delete post?</h3>
+                <p>This can't be undone and it will be removed from your profile and the timeline of any accounts that
+                    follow you.</p>
+                <div class="modal-actions">
+                    <button class="modal-btn cancel" id="cancelDelete">Cancel</button>
+                    <button class="modal-btn delete" id="confirmDelete">Delete</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const postId = urlParams.get('id');
+            const container = document.getElementById('singlePostContent');
+
+            // Modal Elements
+            const modal = document.getElementById('deleteModal');
+            const cancelBtn = document.getElementById('cancelDelete');
+            const confirmBtn = document.getElementById('confirmDelete');
+
+            // Modal Event Listeners
+            cancelBtn.addEventListener('click', closeModal);
+            window.addEventListener('click', (e) => {
+                if (e.target === modal) closeModal();
+            });
+
+            confirmBtn.addEventListener('click', () => {
+                if (postId) {
+                    deletePost(postId);
+                }
+            });
+
+            function openDeleteModal() {
+                modal.style.display = 'flex';
+            }
+
+            function closeModal() {
+                modal.style.display = 'none';
+            }
+
+            function deletePost(id) {
+                let posts = JSON.parse(localStorage.getItem('blog_posts') || '[]');
+                posts = posts.filter(p => p.id != id); // Use != to match string/number
+                localStorage.setItem('blog_posts', JSON.stringify(posts));
+                window.location.href = 'blog.html'; // Redirect to feed
+            }
+
+            if (!postId) {
+                container.innerHTML = '<p>Post not found.</p>';
+                return;
+            }
+
+            const posts = JSON.parse(localStorage.getItem('blog_posts') || '[]');
+            const post = posts.find(p => p.id == postId);
+
+            if (post) {
+                const date = new Date(post.timestamp).toLocaleDateString('en-US', {
+                    month: 'long',
+                    day: 'numeric',
+                    year: 'numeric'
+                });
+
+                container.innerHTML = `
+                    <article class="blog-post full-post">
+                        <div class="post-header-full">
+                            <div class="post-meta">
+                                <span class="post-author-name">${post.author}</span>
+                                <span class="post-timestamp">${date}</span>
+                            </div>
+                            <button class="delete-btn" id="singlePostDeleteBtn" title="Delete post">
+                                <img src="Images/delete_icon.png" alt="Delete">
+                            </button>
+                        </div>
+                        <div class="post-body-full">
+                            ${post.content}
+                        </div>
+                        ${post.media ? renderMedia(post) : ''}
+                    </article>
+                `;
+
+                document.getElementById('singlePostDeleteBtn').addEventListener('click', openDeleteModal);
+            } else {
+                container.innerHTML = '<p>Post not found.</p>';
+            }
+        });
+
+        function renderMedia(post) {
+            if (post.mediaType === 'video') {
+                return `<div class="post-media-full"><video controls src="${post.media}" style="width:100%; border-radius: 16px;"></video></div>`;
+            } else if (post.mediaType === 'pdf') {
+                return `
+                    <div class="post-media-full">
+                        <a href="${post.media}" download="${post.mediaName}" class="pdf-attachment">
+                            📄 ${post.mediaName || 'Document.pdf'}
+                        </a>
+                    </div>`;
+            } else {
+                return `<div class="post-media-full"><img src="${post.media}" alt="Post media"></div>`;
+            }
+        }
+    </script>
+</body>
+
+</html>
