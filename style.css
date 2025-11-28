@@ -245,8 +245,22 @@ section p {
     cursor: text;
 }
 
-.media-preview-container {
+.composer-title {
+    width: 100%;
+    border: none;
+    font-size: 18px;
+    font-weight: bold;
     margin-bottom: 12px;
+    outline: none;
+    font-family: 'PT Sans', sans-serif;
+}
+
+.composer-title::placeholder {
+    color: #536471;
+}
+
+.media-preview-container {
+    margin-top: 12px;
     position: relative;
 }
 

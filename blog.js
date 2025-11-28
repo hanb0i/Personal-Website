@@ -50,13 +50,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Handle Post Creation
     postBtn.addEventListener('click', () => {
+        const titleInput = document.getElementById('postTitle');
+        const title = titleInput.value.trim();
         const content = composerInput.innerHTML;
         const textContent = composerInput.innerText.trim();
 
-        if (!textContent && !currentMedia) return;
+        if (!textContent && !currentMedia && !title) return;
 
         const post = {
             id: Date.now(),
+            title: title,
             content: content,
             media: currentMedia,
             mediaType: currentMediaType,
@@ -70,6 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
         renderPost(post, true); // Add to top
 
         // Reset composer
+        titleInput.value = '';
         composerInput.innerHTML = '';
         mediaPreview.innerHTML = '';
         currentMedia = null;
@@ -156,6 +160,8 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
+        const titleHTML = post.title ? `<h2 class="post-title">${post.title}</h2>` : '';
+
         article.innerHTML = `
             <div class="post-content">
                 <div class="post-header">
@@ -167,6 +173,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <img src="Images/delete_icon.png" alt="Delete">
                     </button>
                 </div>
+                ${titleHTML}
                 <div class="post-body">
                     ${post.content}
                 </div>
