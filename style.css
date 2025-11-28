@@ -24,18 +24,18 @@ html {
 
 body {
     padding: 1em;
-    background-color: var(--base-color);
-
+    background-color: var(--color-1);
 }
 
 h1,
 h2,
 h3 {
-    font-family: Crimson Text, PT Sans, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: PT Sans, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 nav {
-    margin: 1em auto 3em auto;
+    margin: 0 auto 2em auto;
+    /* Reduced top margin */
     width: min(1000px, 100%);
 }
 
@@ -64,9 +64,10 @@ nav a:hover {
 
 header,
 section {
-    margin: 2em auto;
+    margin: 1em auto;
+    /* Reduced top/bottom margin */
     width: min(75em, 100%);
-    background-color: var(--color-1);
+    /* background-color: var(--color-1); Removed to blend with body */
     padding: min(1em, 15%);
     border-radius: 1em;
 }
@@ -111,7 +112,7 @@ h1 {
 
 section {
     padding: 3em min(2em, 15%);
-    background-color: var(--color-2);
+    /* background-color: var(--color-2); Removed to blend with body */
     text-align: center;
 }
 
@@ -633,15 +634,43 @@ section p {
     border: 1px solid #cfd9de;
     border-radius: 12px;
     font-weight: 600;
-}.post-title {
+}
+
+.post-title {
     font-size: 18px;
     font-weight: bold;
     margin: 4px 0 8px 0;
     color: #0f1419;
-}.post-title-full {
+}
+
+.post-title-full {
     font-size: 32px;
     font-weight: bold;
     margin-bottom: 16px;
     color: #0f1419;
     line-height: 1.3;
+}/* Social Links Styles */
+.social-links-container {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    margin-top: 32px;
+}
+
+.social-link {
+    color: var(--text-color);
+    transition: transform 0.2s, color 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.social-link svg {
+    width: 48px;
+    height: 48px;
+}
+
+.social-link:hover {
+    transform: translateY(-5px);
+    color: var(--primary-color);
 }
