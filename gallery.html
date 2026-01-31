@@ -6,15 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gallery - Hanbo Song</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Import Map for Three.js and Addons -->
-    <script type="importmap">
-        {
-            "imports": {
-                "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
-                "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
-            }
-        }
-    </script>
 </head>
 
 <body>
@@ -31,65 +22,21 @@
     </header>
 
     <main class="gallery-container">
-        <!-- 3D Model Section -->
-        <section class="gallery-hero" id="canvas-container">
-            <!-- Three.js Canvas will be injected here -->
-            <div id="info-panel" class="info-panel">
-                <h3 id="info-title">Select a component</h3>
-                <p id="info-desc">Click on any part of the DNA model to learn more.</p>
-            </div>
-        </section>
-
-        <!-- Key / Legend -->
-        <section class="gallery-key">
-            <h2>Component Key</h2>
-            <div class="key-grid">
-                <div class="key-item"><span class="color-dot" style="background-color: #ff0000;"></span> Backbone</div>
-                <div class="key-item"><span class="color-dot" style="background-color: #0000ff;"></span> Helicase</div>
-                <div class="key-item"><span class="color-dot" style="background-color: #ffa500;"></span> DNA Polymerase
+        <section class="projects-grid">
+            <a href="dna_replication.html" class="project-card">
+                <div class="project-thumbnail">
+                    <!-- Using a generic dna emoji/placeholder or one of the images until a dedicated thumb is made -->
+                    <img src="Images/IMG_5278.jpeg" alt="DNA Replication Model">
                 </div>
-                <div class="key-item"><span class="color-dot" style="background-color: #008080;"></span> Primase</div>
-                <div class="key-item"><span class="color-dot" style="background-color: #00008b;"></span> Ligase</div>
-                <div class="key-item"><span class="color-dot" style="background-color: #008000;"></span> Topoisomerase
+                <div class="project-info">
+                    <h3>DNA Replication Model</h3>
+                    <p>A model of DNA replication and its components.</p>
                 </div>
-                <div class="key-item"><span class="color-dot" style="background-color: #800080;"></span> SSB Proteins
-                </div>
-                <div class="key-item"><span class="color-dot" style="background-color: #00ff00;"></span> RNA Primer
-                </div>
-            </div>
-        </section>
-
-        <!-- Picture Grid Section -->
-        <section class="gallery-vertical">
-            <div class="gallery-item">
-                <img src="Images/IMG_5275.jpeg" alt="Gallery Image 1">
-                <div class="caption">1. Original DNA strand begins to unravel and is getting ready for replication.
-                </div>
-            </div>
-            <div class="gallery-item">
-                <img src="Images/IMG_5278.jpeg" alt="Gallery Image 2">
-                <div class="caption">2. Labelled Version</div>
-            </div>
-            <div class="gallery-item">
-                <img src="Images/IMG_5279.jpeg" alt="Gallery Image 3">
-                <div class="caption">3. Helicase unwinds the DNA double helix. The leading strand is replicated
-                    continuously, while the lagging strand is replicated discontinuously in short sections (Okazaki
-                    fragments).</div>
-            </div>
-            <div class="gallery-item">
-                <img src="Images/IMG_5280.jpeg" alt="Gallery Image 4">
-                <div class="caption">4. DNA polymerase III synthesizes the leading strand by adding nucleotides to the
-                    3' end while primase synthesizes RNA primers needed to start replication.</div>
-            </div>
-            <div class="gallery-item">
-                <img src="Images/IMG_5281.jpeg" alt="Gallery Image 5">
-                <div class="caption">5. End result of replication. Two separate DNA strands are synthesized.</div>
-            </div>
+            </a>
+            <!-- Future projects can be added here -->
         </section>
     </main>
 
-    <!-- Import Three.js Scene Logic -->
-    <script type="module" src="gallery.js"></script>
 </body>
 
 </html>

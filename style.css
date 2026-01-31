@@ -834,12 +834,60 @@ model-viewer {
     /* Visual cue for placeholder */
 }
 
-aspect-ratio: 1 / 1;
-border-radius: 12px;
-transition: transform 0.2s ease;
+/* Gallery Projects Grid */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2em;
+    padding: 2em;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-.gallery-item:hover {
-    transform: scale(1.02);
-    background-color: #d0d0d0;
+.project-card {
+    text-decoration: none;
+    color: inherit;
+    background: #f9f9f9;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.project-thumbnail {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    background: #eee;
+}
+
+.project-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.project-info {
+    padding: 1.5em;
+}
+
+.project-info h3 {
+    margin-top: 0;
+    margin-bottom: 0.5em;
+    font-size: 1.4em;
+    color: #333;
+}
+
+.project-info p {
+    margin: 0;
+    color: #666;
+    font-size: 1em;
+    line-height: 1.4;
 }
