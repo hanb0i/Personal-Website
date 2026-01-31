@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - Hanbo Song</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Import the component -->
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Hanbo Song</a></li>
+                <li><a href="blog.html">Blogs</a></li>
+                <li><a href="interviews.html">Interviews</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="contact.html">Contact Me</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="gallery-container">
+        <!-- 3D Model Section -->
+        <section class="gallery-hero">
+            <model-viewer alt="A 3D model" src="https://modelviewer.dev/shared-assets/models/Astronaut.glb" ar
+                shadow-intensity="1" camera-controls touch-action="pan-y">
+            </model-viewer>
+        </section>
+
+        <!-- Picture Grid Section -->
+        <section class="gallery-grid">
+            <div class="gallery-item"></div>
+            <div class="gallery-item"></div>
+            <div class="gallery-item"></div>
+            <div class="gallery-item"></div>
+            <div class="gallery-item"></div>
+            <div class="gallery-item"></div>
+        </section>
+    </main>
+
+</body>
+
+</html>
