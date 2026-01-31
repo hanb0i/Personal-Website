@@ -649,7 +649,9 @@ section p {
     margin-bottom: 16px;
     color: #0f1419;
     line-height: 1.3;
-}/* Social Links Styles */
+}
+
+/* Social Links Styles */
 .social-links-container {
     display: flex;
     justify-content: center;
@@ -698,22 +700,143 @@ section p {
 model-viewer {
     width: 100%;
     height: 100%;
-    background-color: #cccccc; /* Fallback/Placeholder color */
 }
 
-.gallery-grid {
+/* Three.js Canvas Container */
+#canvas-container {
+    position: relative;
+    background-color: #f0f0f0;
+    padding: 0;
+    /* Ensure canvas takes full space */
+    display: block;
+    /* Override flex if needed */
+}
+
+/* Info Panel Overlay */
+.info-panel {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    max-width: 300px;
+    transform: translateY(120%);
+    transition: transform 0.3s ease;
+    border: 1px solid #ddd;
+}
+
+.info-panel.visible {
+    transform: translateY(0);
+}
+
+.info-panel h3 {
+    margin: 0 0 8px 0;
+    color: var(--text-color);
+}
+
+.info-panel p {
+    margin: 0;
+    font-size: 0.9em;
+    line-height: 1.4;
+    color: #555;
+}
+
+/* CSS2D Label */
+.model-label {
+    color: #000;
+    font-family: sans-serif;
+    padding: 4px 8px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 4px;
+    font-size: 12px;
+    pointer-events: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-weight: bold;
+}
+
+/* Key / Legend Styles */
+.gallery-key {
+    background: white;
+    padding: 1.5em;
+    border-radius: 12px;
+    margin-bottom: 2em;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.gallery-key h2 {
+    font-size: 1.5em;
+    margin-bottom: 1em;
+    text-align: center;
+}
+
+.key-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 1.5em;
-    margin-bottom: 3em;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1em;
+}
+
+.key-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1em;
+    color: #333;
+}
+
+.color-dot {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.gallery-vertical {
+    display: flex;
+    flex-direction: column;
+    gap: 4em;
+    margin-bottom: 4em;
+    align-items: center;
 }
 
 .gallery-item {
-    background-color: #e0e0e0;
     width: 100%;
-    aspect-ratio: 1 / 1;
-    border-radius: 12px;
-    transition: transform 0.2s ease;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: transparent;
+}
+
+.gallery-item img {
+    width: auto;
+    max-width: 60%;
+    /* Reduce width so rotated height doesn't overflow horizontally */
+    max-height: 800px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transform: rotate(-90deg);
+    margin: 4em 0;
+    /* Extra margin to handle overlap from rotation */
+}
+
+.caption {
+    margin-top: 1em;
+    font-family: 'Crimson Text', serif;
+    font-size: 1.25em;
+    color: #555;
+    font-style: italic;
+    width: 100%;
+    text-align: center;
+    padding: 0.5em;
+    border-bottom: 1px solid #ddd;
+    /* Visual cue for placeholder */
+}
+
+aspect-ratio: 1 / 1;
+border-radius: 12px;
+transition: transform 0.2s ease;
 }
 
 .gallery-item:hover {
