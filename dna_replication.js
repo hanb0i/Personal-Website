@@ -333,9 +333,11 @@ function onMouseClick(event) {
             showInfo(name, INFO_DATA[name]);
 
             // Highlight
-            if (selectedObject && selectedObject !== object) restoreObjectStyle(selectedObject);
-            selectedObject = object;
-            highlighObject(selectedObject);
+            if (selectedObject !== object) {
+                if (selectedObject) restoreObjectStyle(selectedObject);
+                selectedObject = object;
+                highlighObject(selectedObject);
+            }
         }
     } else {
         // Clicked background
