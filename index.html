@@ -4,30 +4,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hanbo</title>
+    <title>Hanbo Song</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <header>
-        <nav>
+    <nav class="animate-in delay-1">
+        <div class="nav-content">
             <ul>
-                <li><a href="index.html">Hanbo Song</a></li>
-                <li><a href="blog.html">Blogs</a></li>
-                <li><a href="interviews.html">Interviews</a></li>
-                <li><a href="gallery.html">Gallery</a></li>
-                <li><a href="contact.html">Contact Me</a></li>
+                <li><a href="#top">Hanbo Song</a></li>
+                <li><a href="#interviews">Interviews</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
-        </nav>
-        <div class="flex-container">
-            <img height="400px" width="600px" src="Images/Myself.jpeg">
-            <div class="text-container">
-                <h1>Hi, I'm Hanbo! 👋</h1>
-                <p>Meeting interesting people in the future of Science and Tech!</p>
-                <p><a href="https://cal.com/hanbosong">Schedule a meeting</a>.</p>
-            </div>
         </div>
-    </header>
+    </nav>
+
+    <main>
+        <!-- Hero -->
+        <section class="hero animate-in delay-2" id="top">
+            <h1>Hanbo Song</h1>
+        </section>
+
+        <!-- Interviews -->
+        <section id="interviews" class="animate-in delay-3">
+            <h2 class="section-title">Interviews</h2>
+            <div class="channel-header-mini">
+                <img src="Images/channel_image.jpg" alt="HackClub AMA">
+                <a href="https://www.youtube.com/@hackclubama" target="_blank">HackClubAMA</a>
+            </div>
+            <div class="interview-list">
+                <a href="https://www.youtube.com/watch?v=MhPXGiFJaK4" target="_blank" class="interview-item">
+                    <img src="https://img.youtube.com/vi/MhPXGiFJaK4/maxresdefault.jpg" alt="Tim O'Reilly">
+                    <p>Tim O'Reilly</p>
+                </a>
+                <a href="https://www.youtube.com/watch?v=0SZIb7sJC-A" target="_blank" class="interview-item">
+                    <img src="https://img.youtube.com/vi/0SZIb7sJC-A/mqdefault.jpg" alt="Buck Shlegeris">
+                    <p>Buck Shlegeris</p>
+                </a>
+                <a href="https://www.youtube.com/watch?v=hDqPVHT3Sq0" target="_blank" class="interview-item">
+                    <img src="https://img.youtube.com/vi/hDqPVHT3Sq0/mqdefault.jpg" alt="Arthur Conmy">
+                    <p>Arthur Conmy</p>
+                </a>
+                <a href="https://www.youtube.com/watch?v=1-8D0-HKxus" target="_blank" class="interview-item">
+                    <img src="https://img.youtube.com/vi/1-8D0-HKxus/mqdefault.jpg" alt="Armando Solar-Lezama">
+                    <p>Armando Solar-Lezama</p>
+                </a>
+                <a href="https://www.youtube.com/watch?v=hXNw6vDtojs" target="_blank" class="interview-item">
+                    <img src="https://img.youtube.com/vi/hXNw6vDtojs/mqdefault.jpg" alt="Dr. Ilan Strauss">
+                    <p>Dr. Ilan Strauss</p>
+                </a>
+                <a href="https://www.youtube.com/watch?v=MaNFxkM_dzI" target="_blank" class="interview-item">
+                    <img src="https://img.youtube.com/vi/MaNFxkM_dzI/mqdefault.jpg" alt="Prof. Michael Littman">
+                    <p>Prof. Michael Littman</p>
+                </a>
+                <a href="https://www.youtube.com/watch?v=fKBKGRyLXaM" target="_blank" class="interview-item">
+                    <img src="https://img.youtube.com/vi/fKBKGRyLXaM/mqdefault.jpg" alt="Professor Karen Livescu">
+                    <p>Professor Karen Livescu</p>
+                </a>
+            </div>
+            <div class="interviews-cta">
+                <a href="https://cal.com/hanbosong" class="cta-btn">Schedule a meeting</a>
+            </div>
+        </section>
+
+        <!-- Gallery -->
+        <section id="gallery" class="animate-in delay-4">
+            <h2 class="section-title">Gallery</h2>
+            <a href="dna_replication.html" class="project-card">
+                <div class="project-thumbnail">
+                    <img src="Images/IMG_5278.jpeg" alt="DNA Replication Model">
+                </div>
+                <div class="project-info">
+                    <h3>DNA Replication Model</h3>
+                    <p>A model of DNA replication and its components.</p>
+                </div>
+            </a>
+        </section>
+
+        <!-- Contact -->
+        <section id="contact" class="animate-in delay-4">
+            <h2 class="section-title">Contact</h2>
+            <div class="social-links">
+                <a href="mailto:me@hanbosong.com" title="Email">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0L1.5 8.67z" />
+                        <path
+                            d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z" />
+                    </svg>
+                </a>
+                <a href="https://www.linkedin.com/in/hanbosong/" target="_blank" title="LinkedIn">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z">
+                        </path>
+                    </svg>
+                </a>
+                <a href="https://x.com/hanb0i" target="_blank" title="X (Twitter)">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z">
+                        </path>
+                    </svg>
+                </a>
+            </div>
+        </section>
+    </main>
 </body>
 
 </html>
