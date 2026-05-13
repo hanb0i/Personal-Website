@@ -545,7 +545,7 @@ footer {
   border-radius: 50%;
   display: inline-block;
   flex-shrink: 0;
-  box-shadow: 0 0 10px currentColor;
+
 }
 
 .gallery-vertical {
