@@ -1,4 +1,6 @@
 /* Futuristic Minimalist Personal Website Styles */
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap');
 
 :root {
   --text: #f0f0f0;
@@ -25,12 +27,16 @@ html {
 }
 
 body {
-  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-family: 'PT Sans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: var(--text);
   background: var(--bg);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   min-height: 100vh;
+}
+
+h1, h2, h3 {
+  font-family: 'Crimson Text', 'PT Sans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 /* Base Animations */
@@ -245,6 +251,8 @@ section {
 }
 
 .channel-header-mini a {
+  font-family: 'Crimson Text', serif;
+  font-weight: 600;
   color: var(--text);
   text-decoration: none;
   font-size: 1.1rem;
