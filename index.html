@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hanbo Song</title>
+    <link rel="icon" type="image/jpeg" href="Images/favicon.jpg">
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -12,10 +13,11 @@
     <nav class="animate-in delay-1">
         <div class="nav-content">
             <ul>
-                <li><a href="#top">Hanbo Song</a></li>
+                <li><a href="#top">Home</a></li>
+                <li><a href="blog.html">Blog</a></li>
                 <li><a href="#interviews">Interviews</a></li>
                 <li><a href="#gallery">Gallery</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#contact">Contact Me</a></li>
             </ul>
         </div>
     </nav>
@@ -24,6 +26,7 @@
         <!-- Hero -->
         <section class="hero animate-in delay-2" id="top">
             <h1>Hanbo Song</h1>
+            <p class="hero-desc">I research a wide variety of topics in the realm of physics, computer science, and mathematics. Currently, I'm inspired by the intersection between the three, primarily in scientific machine learning. I also host Hack Club's AMA series.</p>
         </section>
 
         <!-- Interviews -->
@@ -34,34 +37,96 @@
                 <a href="https://www.youtube.com/@hackclubama" target="_blank">HackClubAMA</a>
             </div>
             <div class="interview-list">
-                <a href="https://www.youtube.com/watch?v=MhPXGiFJaK4" target="_blank" class="interview-item">
-                    <img src="https://img.youtube.com/vi/MhPXGiFJaK4/maxresdefault.jpg" alt="Tim O'Reilly">
-                    <p>Tim O'Reilly</p>
-                </a>
-                <a href="https://www.youtube.com/watch?v=0SZIb7sJC-A" target="_blank" class="interview-item">
-                    <img src="https://img.youtube.com/vi/0SZIb7sJC-A/mqdefault.jpg" alt="Buck Shlegeris">
-                    <p>Buck Shlegeris</p>
-                </a>
-                <a href="https://www.youtube.com/watch?v=hDqPVHT3Sq0" target="_blank" class="interview-item">
-                    <img src="https://img.youtube.com/vi/hDqPVHT3Sq0/mqdefault.jpg" alt="Arthur Conmy">
-                    <p>Arthur Conmy</p>
-                </a>
-                <a href="https://www.youtube.com/watch?v=1-8D0-HKxus" target="_blank" class="interview-item">
-                    <img src="https://img.youtube.com/vi/1-8D0-HKxus/mqdefault.jpg" alt="Armando Solar-Lezama">
-                    <p>Armando Solar-Lezama</p>
-                </a>
-                <a href="https://www.youtube.com/watch?v=hXNw6vDtojs" target="_blank" class="interview-item">
-                    <img src="https://img.youtube.com/vi/hXNw6vDtojs/mqdefault.jpg" alt="Dr. Ilan Strauss">
-                    <p>Dr. Ilan Strauss</p>
-                </a>
-                <a href="https://www.youtube.com/watch?v=MaNFxkM_dzI" target="_blank" class="interview-item">
-                    <img src="https://img.youtube.com/vi/MaNFxkM_dzI/mqdefault.jpg" alt="Prof. Michael Littman">
-                    <p>Prof. Michael Littman</p>
-                </a>
-                <a href="https://www.youtube.com/watch?v=fKBKGRyLXaM" target="_blank" class="interview-item">
-                    <img src="https://img.youtube.com/vi/fKBKGRyLXaM/mqdefault.jpg" alt="Professor Karen Livescu">
-                    <p>Professor Karen Livescu</p>
-                </a>
+                <!-- Tim O'Reilly -->
+                <div class="interview-card">
+                    <div class="interview-media">
+                        <a href="https://www.youtube.com/watch?v=MhPXGiFJaK4" target="_blank">
+                            <img src="https://img.youtube.com/vi/MhPXGiFJaK4/maxresdefault.jpg" alt="Tim O'Reilly">
+                        </a>
+                    </div>
+                    <div class="interview-text">
+                        <h3><a href="https://www.youtube.com/watch?v=MhPXGiFJaK4" target="_blank">Tim O'Reilly</a></h3>
+                        <p>In this AMA, Tim O'Reilly, founder of O'Reilly Media, shares his journey from a tech writer to a leading figure in publishing and technology. He discusses the evolution of his company, the impact of AI on society, and the importance of ethical considerations in technology development. O'Reilly emphasizes the need for entrepreneurs to focus on meaningful work rather than just financial gain, and he introduces the AI Disclosures Project aimed at promoting transparency in AI technologies.</p>
+                    </div>
+                </div>
+
+                <!-- Buck Shlegeris -->
+                <div class="interview-card">
+                    <div class="interview-media">
+                        <a href="https://www.youtube.com/watch?v=0SZIb7sJC-A" target="_blank">
+                            <img src="https://img.youtube.com/vi/0SZIb7sJC-A/mqdefault.jpg" alt="Buck Shlegeris">
+                        </a>
+                    </div>
+                    <div class="interview-text">
+                        <h3><a href="https://www.youtube.com/watch?v=0SZIb7sJC-A" target="_blank">Buck Shlegeris</a></h3>
+                        <p>In this AMA, Buck discusses his work as CEO of Redwood Research on AI control and safety. He emphasizes the importance of understanding AI's potential to misalign with human interests and the need for effective control strategies. The discussion also touches on the role of interpretability in AI, the societal implications of AI advancements, and the responsibilities of AI companies in mitigating risks.</p>
+                    </div>
+                </div>
+
+                <!-- Arthur Conmy -->
+                <div class="interview-card">
+                    <div class="interview-media">
+                        <a href="https://www.youtube.com/watch?v=hDqPVHT3Sq0" target="_blank">
+                            <img src="https://img.youtube.com/vi/hDqPVHT3Sq0/mqdefault.jpg" alt="Arthur Conmy">
+                        </a>
+                    </div>
+                    <div class="interview-text">
+                        <h3><a href="https://www.youtube.com/watch?v=hDqPVHT3Sq0" target="_blank">Arthur Conmy</a></h3>
+                        <p>In this episode, I hosted an Ask-Me-Anything with over 100 RSVPs. Our guest, Arthur Conmy, is a leading AI safety researcher at Google DeepMind and the University of Cambridge, known for pioneering automated circuit discovery and training over 400 sparse autoencoders for Gemma Scope. Whether you're new to AI or deeply into mechanistic interpretability, come learn how he's helping lift the lid on black-box LLMs.</p>
+                    </div>
+                </div>
+
+                <!-- Armando Solar-Lezama -->
+                <div class="interview-card">
+                    <div class="interview-media">
+                        <a href="https://www.youtube.com/watch?v=1-8D0-HKxus" target="_blank">
+                            <img src="https://img.youtube.com/vi/1-8D0-HKxus/mqdefault.jpg" alt="Armando Solar-Lezama">
+                        </a>
+                    </div>
+                    <div class="interview-text">
+                        <h3><a href="https://www.youtube.com/watch?v=1-8D0-HKxus" target="_blank">Armando Solar-Lezama</a></h3>
+                        <p>In this AMA, Professor Armando Solar-Lezama discusses the concept of program synthesis, its evolution, and its intersection with AI and deep learning. He emphasizes the importance of collaboration between machines and developers, the role of formal guarantees in program synthesis, and the potential of neuro-symbolic programming in scientific discovery. The discussion also touches on the challenges of AI safety and the unique contributions of academia to the field of AI research.</p>
+                    </div>
+                </div>
+
+                <!-- Dr. Ilan Strauss -->
+                <div class="interview-card">
+                    <div class="interview-media">
+                        <a href="https://www.youtube.com/watch?v=hXNw6vDtojs" target="_blank">
+                            <img src="https://img.youtube.com/vi/hXNw6vDtojs/mqdefault.jpg" alt="Dr. Ilan Strauss">
+                        </a>
+                    </div>
+                    <div class="interview-text">
+                        <h3><a href="https://www.youtube.com/watch?v=hXNw6vDtojs" target="_blank">Dr. Ilan Strauss</a></h3>
+                        <p>In this AMA, Dr. Ilan Strauss discusses the economic implications of artificial intelligence, focusing on market structures, protocols for competition, and the evaluation of AI systems. He explores the potential impacts of AI on employment, taxation policies, and the contrasting economic models of China and the United States. The discussion also touches on the concept of degrowth and the future of AI in society, emphasizing the need for proactive measures to ensure equitable outcomes in an increasingly automated world.</p>
+                    </div>
+                </div>
+
+                <!-- Prof. Michael Littman -->
+                <div class="interview-card">
+                    <div class="interview-media">
+                        <a href="https://www.youtube.com/watch?v=MaNFxkM_dzI" target="_blank">
+                            <img src="https://img.youtube.com/vi/MaNFxkM_dzI/mqdefault.jpg" alt="Prof. Michael Littman">
+                        </a>
+                    </div>
+                    <div class="interview-text">
+                        <h3><a href="https://www.youtube.com/watch?v=MaNFxkM_dzI" target="_blank">Prof. Michael Littman</a></h3>
+                        <p>In this AMA, Brown Professor Michael L. Littman, pioneer in machine learning and reinforcement learning, discusses his encounters with AI usage and its effects on the education of students, productivity of workers, and development of core fundamental skills. Through wonderful personal stories, references to various studies, and opinions of other educators, he paints a comprehensive picture of where we stand in terms of AI risks.</p>
+                    </div>
+                </div>
+
+                <!-- Professor Karen Livescu -->
+                <div class="interview-card">
+                    <div class="interview-media">
+                        <a href="https://www.youtube.com/watch?v=fKBKGRyLXaM" target="_blank">
+                            <img src="https://img.youtube.com/vi/fKBKGRyLXaM/mqdefault.jpg" alt="Professor Karen Livescu">
+                        </a>
+                    </div>
+                    <div class="interview-text">
+                        <h3><a href="https://www.youtube.com/watch?v=fKBKGRyLXaM" target="_blank">Professor Karen Livescu</a></h3>
+                        <p>In this AMA, Professor Karen Livescu discusses her research in speech and language processing, focusing on multimodal representation learning across spoken, written, and signed languages. She explores efforts to make AI language models more universal and capable. The discussion dives into challenges in multimodal learning, the importance of inclusivity in AI design, and the future of speech technology. There is key emphasis on collaboration, data efficiency, and ethical considerations in developing systems that bridge human communication and machine understanding.</p>
+                    </div>
+                </div>
             </div>
             <div class="interviews-cta">
                 <a href="https://cal.com/hanbosong" class="cta-btn">Schedule a meeting</a>

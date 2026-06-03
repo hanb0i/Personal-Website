@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Post - Hanbo Song</title>
     <link rel="stylesheet" href="style.css">
+    <script src="blog_data.js"></script>
 </head>
 
 <body>
@@ -14,7 +15,7 @@
             <div class="nav-content">
                 <ul>
                     <li><a href="index.html">Hanbo Song</a></li>
-                    <li><a href="blog.html">Blogs</a></li>
+                    <li><a href="blog.html">Blog</a></li>
                     <li><a href="index.html#interviews">Interviews</a></li>
                     <li><a href="index.html#gallery">Gallery</a></li>
                     <li><a href="index.html#contact">Contact Me</a></li>
@@ -46,6 +47,7 @@
             const urlParams = new URLSearchParams(window.location.search);
             const postId = urlParams.get('id');
             const container = document.getElementById('singlePostContent');
+            const isAdmin = urlParams.get('admin') === 'true';
 
             // Modal Elements
             const modal = document.getElementById('deleteModal');
@@ -73,10 +75,20 @@
             }
 
             function deletePost(id) {
-                let posts = JSON.parse(localStorage.getItem('blog_posts') || '[]');
-                posts = posts.filter(p => p.id != id); // Use != to match string/number
-                localStorage.setItem('blog_posts', JSON.stringify(posts));
-                window.location.href = 'blog.html'; // Redirect to feed
+                let localPosts = JSON.parse(localStorage.getItem('blog_posts') || '[]');
+                const isLocal = localPosts.some(p => p.id == id);
+                if (isLocal) {
+                    localPosts = localPosts.filter(p => p.id != id);
+                    localStorage.setItem('blog_posts', JSON.stringify(localPosts));
+                } else {
+                    const deletedIds = JSON.parse(localStorage.getItem('deleted_static_posts') || '[]');
+                    const numId = Number(id);
+                    if (!deletedIds.includes(numId)) {
+                        deletedIds.push(numId);
+                        localStorage.setItem('deleted_static_posts', JSON.stringify(deletedIds));
+                    }
+                }
+                window.location.href = 'blog.html' + (isAdmin ? '?admin=true' : '');
             }
 
             if (!postId) {
@@ -84,8 +96,17 @@
                 return;
             }
 
-            const posts = JSON.parse(localStorage.getItem('blog_posts') || '[]');
-            const post = posts.find(p => p.id == postId);
+            const staticPosts = typeof STATIC_BLOG_POSTS !== 'undefined' ? STATIC_BLOG_POSTS : [];
+            const localPosts = JSON.parse(localStorage.getItem('blog_posts') || '[]');
+            
+            const allPostsMap = new Map();
+            staticPosts.forEach(p => allPostsMap.set(p.id, p));
+            localPosts.forEach(p => allPostsMap.set(p.id, p));
+            
+            const deletedIds = JSON.parse(localStorage.getItem('deleted_static_posts') || '[]');
+            const post = Array.from(allPostsMap.values())
+                .filter(p => !deletedIds.includes(p.id))
+                .find(p => p.id == postId);
 
             if (post) {
                 const date = new Date(post.timestamp).toLocaleDateString('en-US', {
@@ -94,6 +115,12 @@
                     year: 'numeric'
                 });
 
+                const deleteBtnHTML = isAdmin ? `
+                    <button class="delete-btn" id="singlePostDeleteBtn" title="Delete post">
+                        <img src="Images/delete_icon.png" alt="Delete">
+                    </button>
+                ` : '';
+
                 container.innerHTML = `
                     <article class="blog-post full-post">
                         <div class="post-header-full">
@@ -101,9 +128,7 @@
                                 <span class="post-author-name">${post.author}</span>
                                 <span class="post-timestamp">${date}</span>
                             </div>
-                            <button class="delete-btn" id="singlePostDeleteBtn" title="Delete post">
-                                <img src="Images/delete_icon.png" alt="Delete">
-                            </button>
+                            ${deleteBtnHTML}
                         </div>
                         ${post.title ? `<h1 class="post-title-full">${post.title}</h1>` : ''}
                         <div class="post-body-full">
@@ -113,7 +138,9 @@
                     </article>
                 `;
 
-                document.getElementById('singlePostDeleteBtn').addEventListener('click', openDeleteModal);
+                if (isAdmin) {
+                    document.getElementById('singlePostDeleteBtn').addEventListener('click', openDeleteModal);
+                }
             } else {
                 container.innerHTML = '<p>Post not found.</p>';
             }

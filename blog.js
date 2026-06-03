@@ -8,15 +8,57 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Admin Mode Check
     const urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.get('admin') === 'true') {
-        composer.style.display = 'flex';
+    const isAdmin = urlParams.get('admin') === 'true';
+    
+    if (isAdmin) {
+        composer.style.display = 'block';
+        
+        // Add Export JSON button in admin mode
+        const toolbarRight = document.querySelector('.toolbar-right');
+        if (toolbarRight) {
+            const exportBtn = document.createElement('button');
+            exportBtn.className = 'tool-btn';
+            exportBtn.id = 'exportBtn';
+            exportBtn.innerText = 'Export JSON';
+            exportBtn.title = 'Copy posts code for blog_data.js';
+            exportBtn.style.marginRight = '10px';
+            exportBtn.style.padding = '0.5rem 1rem';
+            exportBtn.style.borderRadius = '30px';
+            exportBtn.style.border = '1px solid var(--surface-border)';
+            exportBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const staticPosts = typeof STATIC_BLOG_POSTS !== 'undefined' ? STATIC_BLOG_POSTS : [];
+                const localPosts = JSON.parse(localStorage.getItem('blog_posts') || '[]');
+                
+                const allPostsMap = new Map();
+                staticPosts.forEach(p => allPostsMap.set(p.id, p));
+                localPosts.forEach(p => allPostsMap.set(p.id, p));
+                
+                const deletedIds = JSON.parse(localStorage.getItem('deleted_static_posts') || '[]');
+                const posts = Array.from(allPostsMap.values())
+                    .filter(p => !deletedIds.includes(p.id))
+                    .sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+
+                const exportedCode = `const STATIC_BLOG_POSTS = ${JSON.stringify(posts, null, 4)};`;
+                navigator.clipboard.writeText(exportedCode).then(() => {
+                    alert('Static blog posts code copied to clipboard! You can paste it directly into blog_data.js.');
+                }).catch(err => {
+                    console.error('Failed to copy: ', err);
+                    console.log(exportedCode);
+                    alert('Exported code printed to browser console (failed to copy to clipboard).');
+                });
+            });
+            toolbarRight.prepend(exportBtn);
+        }
+    } else {
+        composer.style.display = 'none';
     }
 
     let currentMedia = null;
     let currentMediaType = null; // 'image', 'video', 'pdf'
     let currentMediaName = null;
 
-    // Load posts from localStorage
+    // Load posts
     loadPosts();
 
     // Handle Media Upload
@@ -66,11 +108,10 @@ document.addEventListener('DOMContentLoaded', () => {
             mediaName: currentMediaName,
             timestamp: new Date().toISOString(),
             author: "Hanbo Song"
-            // Avatar removed
         };
 
         savePost(post);
-        renderPost(post, true); // Add to top
+        loadPosts(); // Re-render entire feed to get month headers correct
 
         // Reset composer
         titleInput.value = '';
@@ -89,9 +130,39 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function loadPosts() {
-        const posts = JSON.parse(localStorage.getItem('blog_posts') || '[]');
+        const staticPosts = typeof STATIC_BLOG_POSTS !== 'undefined' ? STATIC_BLOG_POSTS : [];
+        const localPosts = JSON.parse(localStorage.getItem('blog_posts') || '[]');
+        
+        const allPostsMap = new Map();
+        staticPosts.forEach(p => allPostsMap.set(p.id, p));
+        localPosts.forEach(p => allPostsMap.set(p.id, p));
+        
+        const deletedIds = JSON.parse(localStorage.getItem('deleted_static_posts') || '[]');
+        const posts = Array.from(allPostsMap.values())
+            .filter(p => !deletedIds.includes(p.id))
+            .sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+
         feedContainer.innerHTML = '';
-        posts.forEach(post => renderPost(post));
+        
+        let currentMonthYear = "";
+        posts.forEach(post => {
+            const postDate = new Date(post.timestamp);
+            const monthYear = postDate.toLocaleDateString('en-US', {
+                month: 'long',
+                year: 'numeric'
+            });
+            
+            if (monthYear !== currentMonthYear) {
+                currentMonthYear = monthYear;
+                const header = document.createElement('h2');
+                header.className = 'archive-month-title';
+                header.innerText = monthYear;
+                feedContainer.appendChild(header);
+            }
+            
+            const article = renderPost(post);
+            feedContainer.appendChild(article);
+        });
     }
 
     // Modal Elements
@@ -125,13 +196,22 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function deletePost(id) {
-        let posts = JSON.parse(localStorage.getItem('blog_posts') || '[]');
-        posts = posts.filter(p => p.id !== id);
-        localStorage.setItem('blog_posts', JSON.stringify(posts));
+        let localPosts = JSON.parse(localStorage.getItem('blog_posts') || '[]');
+        const isLocal = localPosts.some(p => p.id === id);
+        if (isLocal) {
+            localPosts = localPosts.filter(p => p.id !== id);
+            localStorage.setItem('blog_posts', JSON.stringify(localPosts));
+        } else {
+            const deletedIds = JSON.parse(localStorage.getItem('deleted_static_posts') || '[]');
+            if (!deletedIds.includes(id)) {
+                deletedIds.push(id);
+                localStorage.setItem('deleted_static_posts', JSON.stringify(deletedIds));
+            }
+        }
         loadPosts(); // Re-render feed
     }
 
-    function renderPost(post, prepend = false) {
+    function renderPost(post) {
         // Only show date, no time
         const date = new Date(post.timestamp).toLocaleDateString('en-US', {
             month: 'short',
@@ -141,7 +221,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const article = document.createElement('article');
         article.className = 'blog-post';
-        article.onclick = () => window.location.href = `post.html?id=${post.id}`;
+        article.onclick = () => window.location.href = `post.html?id=${post.id}${isAdmin ? '&admin=true' : ''}`;
 
         let mediaHTML = '';
         if (post.media) {
@@ -155,12 +235,16 @@ document.addEventListener('DOMContentLoaded', () => {
                         </a>
                     </div>`;
             } else {
-                // Default to image for backward compatibility or explicit image type
                 mediaHTML = `<div class="post-media"><img src="${post.media}" alt="Post media"></div>`;
             }
         }
 
         const titleHTML = post.title ? `<h2 class="post-title">${post.title}</h2>` : '';
+        const deleteBtnHTML = isAdmin ? `
+            <button class="delete-btn" title="Delete post">
+                <img src="Images/delete_icon.png" alt="Delete">
+            </button>
+        ` : '';
 
         article.innerHTML = `
             <div class="post-content">
@@ -169,9 +253,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <span class="post-author">${post.author}</span>
                         <span class="post-date">· ${date}</span>
                     </div>
-                    <button class="delete-btn" title="Delete post">
-                        <img src="Images/delete_icon.png" alt="Delete">
-                    </button>
+                    ${deleteBtnHTML}
                 </div>
                 ${titleHTML}
                 <div class="post-body">
@@ -181,14 +263,12 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
         `;
 
-        // Attach delete event listener
-        const deleteBtn = article.querySelector('.delete-btn');
-        deleteBtn.addEventListener('click', (e) => openDeleteModal(e, post.id));
-
-        if (prepend) {
-            feedContainer.prepend(article);
-        } else {
-            feedContainer.appendChild(article);
+        if (isAdmin) {
+            // Attach delete event listener
+            const deleteBtn = article.querySelector('.delete-btn');
+            deleteBtn.addEventListener('click', (e) => openDeleteModal(e, post.id));
         }
+
+        return article;
     }
 });
