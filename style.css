@@ -72,14 +72,7 @@ nav ul {
   list-style: none;
   gap: 2rem;
   flex-wrap: wrap;
-}
-
-nav li:first-child {
-  margin-right: auto;
-  font-weight: bold;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  font-size: 1.1rem;
+  justify-content: center;
 }
 
 nav a {
@@ -146,9 +139,9 @@ section {
 }
 
 .hero-desc {
-  font-size: 1.1rem;
+  font-size: 1.5rem;
   color: var(--text-secondary);
-  max-width: 600px;
+  max-width: 800px;
   margin: 0 auto;
   line-height: 1.7;
 }
@@ -268,24 +261,15 @@ section {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  gap: 1.5rem;
-  padding: 1.25rem;
-  background: var(--surface);
-  border: 1px solid var(--surface-border);
-  border-radius: 16px;
-  backdrop-filter: var(--blur);
-  -webkit-backdrop-filter: var(--blur);
-  transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-
-.interview-card:hover {
-  background: var(--surface-hover);
-  border-color: var(--text);
+  gap: 2rem;
+  padding: 1.5rem 0;
+  background: transparent;
+  border: none;
 }
 
 .interview-media {
   flex-shrink: 0;
-  width: 280px;
+  width: 350px;
 }
 
 .interview-media a {
@@ -312,8 +296,8 @@ section {
 }
 
 .interview-text h3 {
-  font-size: 1.3rem;
-  font-weight: 400;
+  font-size: 1.5rem;
+  font-weight: 600;
   margin-bottom: 0.75rem;
   letter-spacing: 0.02em;
 }
@@ -330,8 +314,8 @@ section {
 }
 
 .interview-text p {
-  font-size: 0.95rem;
-  line-height: 1.6;
+  font-size: 1.05rem;
+  line-height: 1.7;
   color: var(--text-secondary);
 }
 
