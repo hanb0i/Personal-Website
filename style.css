@@ -277,16 +277,19 @@ section {
   text-decoration: none;
 }
 
-.interview-media img {
+.interview-media img,
+.interview-media iframe {
   width: 100%;
   aspect-ratio: 16 / 9;
   object-fit: cover;
   border-radius: 10px;
   display: block;
   transition: opacity 0.3s ease;
+  border: none;
 }
 
-.interview-card:hover .interview-media img {
+.interview-card:hover .interview-media img,
+.interview-card:hover .interview-media iframe {
   opacity: 0.9;
 }
 
