@@ -251,8 +251,7 @@ section {
 }
 
 .channel-header-mini a {
-  font-family: 'Crimson Text', serif;
-  font-weight: 600;
+  font-weight: bold;
   color: var(--text);
   text-decoration: none;
   font-size: 1.1rem;
